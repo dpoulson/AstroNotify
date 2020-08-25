@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
 use App\Requirement;
+use Illuminate\Http\Request;
 
-class RequirementsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class RequirementsController extends Controller
      */
     public function create()
     {
-        return view('requirement.create');
+        //
     }
 
     /**
@@ -35,37 +36,27 @@ class RequirementsController extends Controller
      */
     public function store(Request $request)
     {
-        $requirement = new Requirement($request->all());
-      //  dd($requirement);
-        auth()->user()->update([
-            'location' => $request['location'],
-            'wind_speed' => $request['wind_speed'],
-            'cloud_cover' => $request['cloud_cover'],
-            'days_ahead' => $request['days_ahead'],
-            'min_hours' => $request['min_hours']
-        ]);
-        return redirect()->route('user.show', auth()->user()->id )
-                        ->with('success','Requirement created successfully.');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('user.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
         //
     }
@@ -74,21 +65,21 @@ class RequirementsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        dd($request);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
         //
     }

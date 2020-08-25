@@ -39,6 +39,6 @@ class User extends Authenticatable
 
     public function requirement()
     {
-	    return $this->hasOne('App\Requirement');
+	    return $this->hasMany('App\Requirement');
     }
 }

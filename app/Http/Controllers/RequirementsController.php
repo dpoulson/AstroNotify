@@ -4,19 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Requirement;
+use App\Location;
 
 class RequirementsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +15,8 @@ class RequirementsController extends Controller
      */
     public function create()
     {
-        return view('requirement.create');
+        $countries = Location::distinct('country')->orderBy('country')->pluck('country')->prepend('Please Select');
+        return view('requirement.create', compact('countries'));
     }
 
     /**
@@ -37,8 +29,8 @@ class RequirementsController extends Controller
     {
         $requirement = new Requirement($request->all());
       //  dd($requirement);
-        auth()->user()->update([
-            'location' => $request['location'],
+        $result = auth()->user()->requirement()->create([
+            'location_id' => $request['location'],
             'wind_speed' => $request['wind_speed'],
             'cloud_cover' => $request['cloud_cover'],
             'days_ahead' => $request['days_ahead'],
@@ -49,40 +41,6 @@ class RequirementsController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -90,6 +48,39 @@ class RequirementsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Requirement::destroy($id);
+        return redirect()->route('user.show', auth()->user()->id )
+                        ->with('success','Requirement deleted successfully.');
+    }
+    
+    public function get_by_country(Request $request)
+    {
+        if (!$request->country) {
+            $html = '<option value="">'.'Please Select'.'</option>';
+        } else {
+            $html = '';
+            $subcountries = Location::distinct('subcountry')->where('country', $request->country)->orderBy('subcountry')->pluck('subcountry');
+            foreach ($subcountries as $subcountry) {
+                $html .= '<option value="'.$subcountry.'">'.$subcountry.'</option>';
+            }
+        }
+
+        return ($html);
+    }
+    
+    public function get_by_subcountry(Request $request)
+    {
+        if (!$request->subcountry) {
+            $html = '<option value="">'.'Please Select'.'</option>';
+        } else {
+            $html = '';
+            $locations = Location::where('subcountry', $request->subcountry)->orderBy('name')->get();
+            //dd($locations);
+            foreach ($locations as $location) {
+                $html .= '<option value="'.$location->id.'">'.$location->name.'</option>';
+            }
+        }
+
+        return ($html);
     }
 }

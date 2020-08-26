@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Requirement;
 use App\Location;
+use DB;
 
 class RequirementsController extends Controller
 {
@@ -36,6 +37,21 @@ class RequirementsController extends Controller
             'days_ahead' => $request['days_ahead'],
             'min_hours' => $request['min_hours']
         ]);
+        $location = Location::find($request['location']);
+        if($location->lat == "") 
+        {
+            $url = "http://api.geonames.org/getJSON?username=dpoulson&geonameId=".$location->id;
+					  $json = file_get_contents($url);
+					  $raw = json_decode($json);
+            $updated = DB::table('locations')
+                        ->where('id', $location->id)
+                        ->update([
+                          'lat' => $raw->lat,
+                          'lon' => $raw->lng,
+                          'timezone' => $raw->timezone->timeZoneId
+                        ]);
+
+        }
         return redirect()->route('user.show', auth()->user()->id )
                         ->with('success','Requirement created successfully.');
     }

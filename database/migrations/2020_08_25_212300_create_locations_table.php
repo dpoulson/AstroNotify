@@ -18,7 +18,7 @@ class CreateLocationsTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('country');
-            $table->string('subcountry');
+            $table->string('subcountry')->nullable();
             $table->string('lat')->nullable();
             $table->string('lon')->nullable();
             $table->string('timezone')->nullable();

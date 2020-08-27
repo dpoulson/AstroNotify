@@ -19,14 +19,14 @@ class Requirement extends Model
     
     public function location()
     {
-        return Location::find($this->location_id);
+        return $this->belongsTo('App\Location');
     }
     
     public function clearSkies()
     {
         $good_night = 0;
         $result = array();
-        $tz = new \DateTimeZone($this->location()->timezone);
+        $tz = new \DateTimeZone($this->location->timezone);
         $forecast_data = Forecast::where('location_id', $this->location_id)->get();
         $sun_data = Sun::where('location_id', $this->location_id)->get();
         for($d = 0; $d < $this->days_ahead; $d++)

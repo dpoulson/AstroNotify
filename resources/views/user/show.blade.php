@@ -24,7 +24,7 @@
       </tr>
       @foreach($user->requirement as $requirement )
       <tr>
-        <td>{{ $requirement->location()->name }} ( {{ $requirement->location()->country }} )</td>
+        <td>{{ $requirement->location->name }} ( {{ $requirement->location->country }} )</td>
         <td>{{ $requirement->wind_speed }}mph</td>
         <td>{{ $requirement->cloud_cover }}%</td>
         <td>{{ $requirement->days_ahead }}</td>

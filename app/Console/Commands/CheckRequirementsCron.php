@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Requirement;
+use App\Mail\ClearNight;
+use Illuminate\Support\Facades\Mail;
 
 class CheckRequirementsCron extends Command
 {
@@ -46,10 +48,8 @@ class CheckRequirementsCron extends Command
             $this->info('Requirements: Number of Results: '.sizeof($results));
             if (sizeof($results) != 0 )
             {
-                foreach($results as $result)
-                {
-                    $this->info('Requirements: Result: '.$result['start_time']. ' for '.$result['hours'].' hours');
-                }
+                //dd($requirement->user());
+                Mail::to('darren.poulson@gmail.com')->send(new ClearNight($requirement->id, $results, $requirement->user, $requirement->location));
             }
         }
         

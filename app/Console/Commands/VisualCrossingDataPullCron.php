@@ -51,6 +51,7 @@ class VisualCrossingDataPullCron extends Command
             $this->info('VisualCrossing:Cron getting location id '.$location);
             $location_data = Location::find($location);
             $url = $this->getUrl($location_data->lat, $location_data->lon);
+            $this->info('VisualCrossing:Cron url: '.$url);
             $data = json_decode(file_get_contents($url));
             foreach ($data as $key=>$value) {
                 if ($key == "location") 

@@ -6,7 +6,7 @@ Hi, {{ $user->name }}
 
 <ul>
 @foreach($results as $result)
-  <li>Possible clear night starting at {{ $result['start_time'] }} for {{ $result['hours'] }}.</li>  
+  <li>Possible clear night starting at {{ $result['start_time'] }} for {{ $result['hours'] }} hours.</li>  
 @endforeach
 </ul>
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row my-4">
+<div class="row my-4 no-gutters">
   <div class="col-lg-12 mx-5">
     <table>
       <tr><th>Name: </th><td>{{ $user->name }}</td></tr>
@@ -11,8 +11,8 @@
   </div>
 </div>
 
-<div class="row my-4">
-  <div class="col-lg-12 mx-5">
+<div class="row my-4 no-gutters">
+  <div class="col-lg-10 mx-5">
     <table class="table table-hover">
       <tr>
         <th>Location</th>
@@ -43,8 +43,8 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-lg-12 mx-5">
+<div class="row no-gutters">
+  <div class="col-lg-10 mx-5">
     <a class="btn btn-success" href="{{ route('requirement.create') }}"> Create New Requirement</a>
   </div>
 </div>

@@ -9,6 +9,16 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -47,6 +57,10 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        if ($user->id !== auth()->user()->id)
+        {
+            abort(403);
+        }
         return view('user.show', compact('user'));
     }
 
@@ -70,7 +84,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        dd($request);
+;
     }
 
     /**

@@ -7,7 +7,7 @@
           <h1>Astro Notifications</h1>
 
 <p>
-This site will allow you to sign up for notifications of upcoming clear skies for astronomical viewing. It is basically an automated version of looking at <a href=http://clearoutside.com/>Clear Outside</a>. It uses the same data backend as Clear Outside (<a href=https://darksky.net/dev>Dark Skies API</a>) and just looks at a few factors to determine if a decent night is coming up for some amateur astronomy.</p>
+This site will allow you to sign up for notifications of upcoming clear skies for astronomical viewing. It is basically an automated version of looking at <a href=http://clearoutside.com/>Clear Outside</a>. It was using the Dark Skies API, but unfortunately that was bought by Apple and closed down. 
 
 <p>
 It will look at a few (configurable) factors. Initially it will make sure that:</p>

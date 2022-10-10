@@ -12,11 +12,6 @@ Hi, {{ $user->name }}
 
 To view the raw data, <a href="{{ route('location.show',$location->id) }}">click here</a>
 
-Forecast information provided by: <br />
-
-<a href="https://darksky.net/poweredby/">
-<img width=400 
-src="https://darksky.net/dev/img/attribution/poweredby-oneline.png">
-</a>
+Forecast information provided by: <a href="https://www.visualcrossing.com/">Visual Crossing</a>
 <hr>
 To check your details, <a href="{{ route('user.show',$user->id) }}">click here</a><br />

@@ -75,4 +75,10 @@ class User extends Authenticatable
 
         return $this->getPhotoUrl();
     }
+
+    public function requirement()
+    {
+	    return $this->hasMany('App\Models\Requirement');
+    }
+
 }

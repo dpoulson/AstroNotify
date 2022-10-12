@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Requirement;
+use App\Models\Requirement;
 use App\Mail\ClearNight;
 use Illuminate\Support\Facades\Mail;
 

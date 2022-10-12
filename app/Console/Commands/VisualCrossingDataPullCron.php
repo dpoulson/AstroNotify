@@ -3,10 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Requirement;
-use App\Location;
-use App\Forecast;
-use App\Sun;
+use App\Models\Requirement;
+use App\Models\Location;
+use App\Models\Forecast;
+use App\Models\Sun;
 
 class VisualCrossingDataPullCron extends Command
 {

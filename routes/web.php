@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RequirementsController;
+use App\Http\Controllers\LocationController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,4 +28,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::resource('requirement', RequirementsController::class);
+    Route::resource('location', LocationController::class);
+    Route::resource('user', UserController::class);
 });

@@ -5,3 +5,11 @@ Livewire.on("confirmDelete", (id) => {
         Livewire.emit("delete", id);
     }
 });
+
+window.addEventListener("requirement-deleted", (event) => {
+    alert(`Requirement was deleted!`);
+});
+
+Livewire.on("triggerCreate", () => {
+    $("#requirement-modal").modal("show");
+});

@@ -21,7 +21,7 @@ class ClearNight extends Mailable
      *
      * @return void
      */
-    public function __construct($requirement, $results, \App\User $user, \App\Location $location)
+    public function __construct($requirement, $results, \App\Models\User $user, \App\Models\Location $location)
     {
         $this->results        = $results;
         $this->user           = $user;

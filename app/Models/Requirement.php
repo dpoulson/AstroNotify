@@ -38,25 +38,25 @@ class Requirement extends Model
                 $dt->setTimestamp($night->time);
                 if($night->time > $sun_data[$d]['sunset'] && $night->time+3600 < $sun_data[$d+1]['sunrise']-3600 && $this->wind_speed >= $night->wind_speed && ($this->cloud_cover)/100 >= $night->cloud_cover) 
                 {
-					          if ($consecutive != 1) 
+					if ($consecutive != 1) 
                     {
-						            $start = $night->time;
-					          }
-					          $consecutive = 1;
-				        } elseif ($consecutive == 1) 
+					    $start = $night->time;
+					}
+					$consecutive = 1;
+                } elseif ($consecutive == 1) 
                 {
-					          $dtstart = new \DateTime("now", $tz);
-					          $dtstart->setTimestamp($start);
-					          $start_string = $dtstart->format('D d/m/y, H:i:s');
-					          $hours = ($night->time - $start)/3600;
-					          if($hours >= $this->min_hours) 
+				    $dtstart = new \DateTime("now", $tz);
+				    $dtstart->setTimestamp($start);
+				    $start_string = $dtstart->format('D d/m/y, H:i:s');
+				    $hours = ($night->time - $start)/3600;
+				    if($hours >= $this->min_hours) 
                     {
-						            $single_result = array('start_time' => $start_string, 'hours' => $hours);
+				        $single_result = array('start_time' => $start_string, 'hours' => $hours, 'location_id' => $this->location_id);
                         array_push($result, $single_result);
-						            $good_night = 1;
-					          }
-					          $consecutive = 0;
-				        }
+				        $good_night = 1;
+				    }
+				    $consecutive = 0;
+				}
             }
         }
         return $result;

@@ -68,7 +68,7 @@ class RequirementForm extends Component
             'location_id' => 'required|integer',
             'wind_speed' => 'required|integer',
             'cloud_cover' => 'required|integer|max:100',
-            'days_ahead' => 'required|integer|max:10',
+            'days_ahead' => 'required|integer|max:15',
             'min_hours' => 'required|integer|max:10',
         ]);
 

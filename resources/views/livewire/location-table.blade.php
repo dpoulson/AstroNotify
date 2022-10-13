@@ -46,7 +46,7 @@
                                     NA
                                 @else
                                     {{ $hour['Wind Speed'] }} <br /> 
-                                    {{ intval($hour['Cloud Cover'])*100 }}
+                                    {{ intval($hour['Cloud Cover']) }}
                                 @endif
                             </td>
 

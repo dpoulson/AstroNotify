@@ -3,6 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:bg-black dark:text-gray-200 leading-tight">
             {{ __('Location') }} : {{ $location->name }}, {{ $location->subcountry }}, {{ $location->country }}
         </h2>
+        <h2 class="font-semibold text-xl text-gray-800 dark:bg-black dark:text-gray-200 leading-tight">
+            Timezone: {{ $location->timezone }}
+        </h2>
     </x-slot>
 
     <div>

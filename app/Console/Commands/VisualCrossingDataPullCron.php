@@ -66,7 +66,6 @@ class VisualCrossingDataPullCron extends Command
                             $last_sunrise = "";
                             foreach($info as $forecast)
                             {
-                                
                                 // Main Forecast
                                 $entry = new Forecast;
                                 $entry->time        = ($forecast->datetime)/1000;

@@ -14,7 +14,11 @@
             <tbody class="text-gray-300 text-sm font-light">
                 @foreach ($requirements as $requirement)
                     <tr class="border-b border-gray-300 hover:bg-gray-700">
-                        <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->location->name }}</td>
+                        <td class="p-3 p-6 text-center whitespace-nowrap">
+                            <a href="{{ route('location.show', ['location' => $requirement->location->id] )}}">
+                                {{ $requirement->location->name }}
+                            </a>
+                        </td>
                         <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->wind_speed }}</td>
                         <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->cloud_cover }}</td>
                         <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->days_ahead }}</td>

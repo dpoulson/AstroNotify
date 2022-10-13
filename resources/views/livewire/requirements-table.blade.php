@@ -1,30 +1,24 @@
 <div>
         @if ($requirements->count())
-        <table class="table-auto">
+        <table class="min-w-max w-full table-auto">
             <thead>
-                <tr>
-                    <th>Location</th>
-                    <th>Wind Speed</th>
-                    <th>Cloud Cover</th>
-                    <th>Days Ahead</th>
-                    <th>Min Hours</th>
-                    <th></th>
-                    <th></th>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th class="p-3 p-6 text-center">Location</th>
+                    <th class="p-3 p-6 text-center">Wind Speed</th>
+                    <th class="p-3 p-6 text-center">Cloud Cover</th>
+                    <th class="p-3 p-6 text-center">Days Ahead</th>
+                    <th class="p-3 p-6 text-center">Min Hours</th>
+                    <th class="p-3 p-6 text-center"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="text-gray-300 text-sm font-light">
                 @foreach ($requirements as $requirement)
-                    <tr>
-                        <td>{{ $requirement->location->name }}</td>
-                        <td>{{ $requirement->wind_speed }}</td>
-                        <td>{{ $requirement->cloud_cover }}</td>
-                        <td>{{ $requirement->days_ahead }}</td>
-                        <td>{{ $requirement->min_hours }}</td>
-                        <td>
-                        <x-action-link href="{{ route('requirement.edit', ['requirement' => $requirement]) }}">
-                            Edit
-                            </x-action-link>
-                        </td>
+                    <tr class="border-b border-gray-300 hover:bg-gray-700">
+                        <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->location->name }}</td>
+                        <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->wind_speed }}</td>
+                        <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->cloud_cover }}</td>
+                        <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->days_ahead }}</td>
+                        <td class="p-3 p-6 text-center whitespace-nowrap">{{ $requirement->min_hours }}</td>
                         <td>
                         <x-jet-danger-button wire:click="$emit('confirmDelete', {{ $requirement->id }})" wire:loading.attr="disabled">
                             Delete

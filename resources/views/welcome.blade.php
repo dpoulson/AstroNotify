@@ -48,7 +48,8 @@
 
 
                         <p class="text-left">This site will allow you to sign up for notifications of upcoming clear skies for astronomical viewing. It is basically an automated version of looking at 
-                        <a href=http://clearoutside.com/>Clear Outside</a>. It was using the Dark Skies API, but unfortunately that was bought by Apple and closed down. </p>
+                        <a href=http://clearoutside.com/>Clear Outside</a>. It was using the Dark Skies API, but unfortunately that was bought by Apple and closed down. I have since re-written it to use an API
+                        from Visual Crossing. This allows for a 15 day forecast</p>
 
                         <p>It will look at a few (configurable) factors. Initially it will make sure that:</p>
                         <ul class="list-disc list-inside">
